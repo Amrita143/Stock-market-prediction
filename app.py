@@ -70,12 +70,12 @@ stock = st.text_input("Enter the Stock ID", "GOOG")
 
 # Fetch data
 end = datetime.now()
-start = datetime(end.year-5, end.month, end.day) # 5 years data
+start = datetime(end.year-7, end.month, end.day) # 7 years data
 # data shape dataframe : Date are the index and columns are the open, high, low , close, Adj close, volume
 data = fetch_stock_data(stock, start, end)
 if data is None:
     st.stop()  # Stop execution if there's an error
-st.subheader("5 years Stock Data ")
+st.subheader("7 years Stock Data ")
 st.write(data)
 
 # Prepare data
@@ -97,7 +97,7 @@ x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 # model = create_model((x_train.shape[1], 1))
 # checkpoint = ModelCheckpoint('best_model.keras', save_best_only=True, monitor='val_loss', mode='min')
 # history = model.fit(x_train, y_train, validation_data=(x_test, y_test), 
-#                     epochs=50, batch_size=32, callbacks=[checkpoint], verbose=0)
+#                     epochs=70, batch_size=32, callbacks=[checkpoint], verbose=0)
 
 
 
