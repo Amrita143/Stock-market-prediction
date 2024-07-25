@@ -94,31 +94,11 @@ x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
 
 # Create and train model
-# model = create_model((x_train.shape[1], 1))
-# checkpoint = ModelCheckpoint('best_model.keras', save_best_only=True, monitor='val_loss', mode='min')
-# history = model.fit(x_train, y_train, validation_data=(x_test, y_test), 
-#                     epochs=70, batch_size=32, callbacks=[checkpoint], verbose=0)
-
-
-
-# model = create_model((x_train.shape[1], 1))
-# try:
-#     checkpoint = ModelCheckpoint('best_model.keras', save_best_only=True, monitor='val_loss', mode='min')
-#     history = model.fit(x_train, y_train, validation_data=(x_test, y_test), 
-#                         epochs=50, batch_size=32, callbacks=[checkpoint], verbose=0)
-#     model.load_weights('best_model.keras')
-# except Exception as e:
-#     st.warning(f"Could not save or load model weights due to: {str(e)}. Continuing with the trained model.")
-
-# # Load best model
-# model.load_weights('best_model.keras')
-
-# Create and train model
 model = create_model((x_train.shape[1], 1))
 # early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 # history = model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=100, batch_size=32, callbacks=[early_stopping], verbose=0)
 history = model.fit(x_train, y_train, validation_data=(x_test, y_test), 
-                    epochs=50, batch_size=32, verbose=0)
+                    epochs=70, batch_size=32, verbose=0)
 st.success("Model trained successfully.")
 
 
