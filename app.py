@@ -70,12 +70,12 @@ stock = st.text_input("Enter the Stock ID", "GOOG")
 
 # Fetch data
 end = datetime.now()
-start = datetime(end.year-7, end.month, end.day) # 7 years data
+start = datetime(end.year-5, end.month, end.day) # 5 years data
 # data shape dataframe : Date are the index and columns are the open, high, low , close, Adj close, volume
 data = fetch_stock_data(stock, start, end)
 if data is None:
     st.stop()  # Stop execution if there's an error
-st.subheader("7 years Stock Data ")
+st.subheader("5 years Stock Data ")
 st.write(data)
 
 # Prepare data
@@ -118,7 +118,7 @@ model = create_model((x_train.shape[1], 1))
 # early_stopping = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
 # history = model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=100, batch_size=32, callbacks=[early_stopping], verbose=0)
 history = model.fit(x_train, y_train, validation_data=(x_test, y_test), 
-                    epochs=100, batch_size=32, verbose=0)
+                    epochs=50, batch_size=32, verbose=0)
 st.success("Model trained successfully.")
 
 
